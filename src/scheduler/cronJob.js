@@ -4,7 +4,7 @@ const fetchJobs = require('../serviceTitan/fetchJobs');
 
 function startScheduler() {
   // Schedule the task to run every 30 minutes
-  cron.schedule('*/30 * * * *', async () => {
+  cron.schedule('*/1 * * * *', async () => {
     console.log(`🔄 Sync started at ${new Date().toISOString()}`);
     try {
       await fetchInvoices();
