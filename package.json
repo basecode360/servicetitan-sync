@@ -1,20 +1,49 @@
 {
   "name": "servicetitan-sync",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "build": "echo \"No build process required for Node.js\" && exit 0"
+    "setup": "node setupComplete.js",
+    "setup:db": "node setupCompleteDatabase.js",
+    "setup:indexes": "node addIndexes.js",
+    "test:all": "npm run test:db && npm run test:token",
+    "test:db": "node testDbConnection.js",
+    "test:token": "node testToken.js",
+    "test:endpoints": "node testWithoutAppKey.js",
+    "check:data": "node checkData.js",
+    "check:status": "node syncStatus.js",
+    "sync:quick": "node -e \"require('./src/serviceTitan/fetchInvoices')().then(() => require('./src/serviceTitan/fetchJobs')()).then(() => require('./src/serviceTitan/fetchAppointments')()).then(() => console.log('✅ Quick sync complete'))\"",
+    "sync:customers": "node -e \"require('./src/serviceTitan/fetchCustomers')().then(() => console.log('✅ Customers sync complete'))\"",
+    "sync:technicians": "node -e \"require('./src/serviceTitan/fetchTechnicians')().then(() => console.log('✅ Technicians sync complete'))\"",
+    "sync:estimates": "node -e \"require('./src/serviceTitan/fetchEstimates')().then(() => console.log('✅ Estimates sync complete'))\"",
+    "sync:notes": "node -e \"require('./src/serviceTitan/fetchJobNotes')().then(() => console.log('✅ Job notes sync complete'))\"",
+    "sync:history": "node -e \"require('./src/serviceTitan/fetchJobHistory')().then(() => console.log('✅ Job history sync complete'))\"",
+    "sync:lookup": "node -e \"require('./src/serviceTitan/fetchLookupTables')().then(() => console.log('✅ Lookup tables sync complete'))\"",
+    "stop:all": "pkill -f 'node index.js'",
+    "fix": "node quickFix.js",
+    "dev": "node index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "servicetitan",
+    "postgresql",
+    "databox",
+    "sync",
+    "api",
+    "integration",
+    "complete"
+  ],
+  "author": "HA",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.9.0",
     "dotenv": "^16.5.0",
     "node-cron": "^4.1.0",
-    "pg": "^8.16.0"
+    "pg": "^8.16.0",
+    "pkill": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   },
   "description": ""
 }
