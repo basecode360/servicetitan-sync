@@ -1,10 +1,10 @@
 {
   "syncInProgress": true,
-  "lastSyncTime": 1749856556948,
-  "totalSyncs": 6,
-  "successfulSyncs": 6,
-  "failedSyncs": 0,
-  "lastActivity": 1750087081040,
+  "lastSyncTime": 1750456487570,
+  "totalSyncs": 18,
+  "successfulSyncs": 17,
+  "failedSyncs": 1,
+  "lastActivity": 1750517180263,
   "currentSyncType": "QUICK",
-  "syncStartTime": 1750087081040
+  "syncStartTime": 1750514400040
 }
